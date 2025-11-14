@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="app">
+    <!-- Header -->
+    <header class="header">
+        <h1>📊 Tinkoff Invest</h1>
+        <div class="user-info" id="userInfo">
+            Загрузка...
+        </div>
+    </header>
+
+    <!-- Setup Section -->
+    <section id="setupSection" class="section hidden">
+        <h2>🔑 Настройка API</h2>
+        <div class="input-group">
+            <input type="text" id="apiToken" placeholder="Введите API токен Tinkoff" class="input">
+            <button onclick="setToken()" class="btn btn-primary">Сохранить токен</button>
+        </div>
+        <div id="tokenStatus"></div>
+    </section>
+
+    <!-- Accounts Section -->
+    <section id="accountsSection" class="section hidden">
+        <h2>📋 Выбор счетов</h2>
+        <div id="accountsList"></div>
+        <button onclick="saveAccounts()" class="btn btn-success">Сохранить выбор</button>
+    </section>
+
+    <!-- Main Dashboard -->
+    <section id="dashboardSection" class="section hidden">
+        <!-- Portfolio Summary -->
+        <div class="card">
+            <h3>💰 Общий портфель</h3>
+            <div id="portfolioSummary">Загрузка...</div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="actions-grid">
+            <button onclick="loadPortfolio()" class="btn btn-secondary">Обновить портфель</button>
+            <button onclick="showIncome('week')" class="btn btn-secondary">Доходность за неделю</button>
+            <button onclick="showIncome('month')" class="btn btn-secondary">Доходность за месяц</button>
+        </div>
+
+        <!-- Charts -->
+        <div class="charts-grid">
+            <div class="card">
+                <h3>📈 Капитал</h3>
+                <div id="capitalChart"></div>
+            </div>
+            <div class="card">
+                <h3>💰 Доходность</h3>
+                <div id="incomeChart"></div>
+            </div>
+        </div>
+
+        <!-- Positions -->
+        <div class="card">
+            <h3>📊 Позиции</h3>
+            <div id="positionsList"></div>
+        </div>
+    </section>
+
+    <!-- Loading -->
+    <div id="loading" class="loading">
+        <div class="spinner"></div>
+        <p>Загрузка...</p>
+    </div>
+</div>
+{% endblock %}
